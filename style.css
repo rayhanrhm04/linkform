@@ -1,0 +1,215 @@
+/* CSS Reset & Base Variables */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* KUNCI MATI SCROLL & BOUNCE EFFECT UNTUK MOBILE */
+html, body {
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden; 
+    overscroll-behavior: none;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #050505; /* Warna dasar hitam pekat */
+    color: #ededed;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: fixed;
+    width: 100%;
+}
+
+/* ========================================= */
+/* BACKGROUND ANIMASI GRADASI (GLOWING ORBS) */
+/* ========================================= */
+body::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    width: 350px;
+    height: 350px;
+    /* Gradasi cahaya biru cyan yang soft */
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: floatGlow 12s ease-in-out infinite alternate;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    bottom: 15%;
+    right: 5%;
+    width: 400px;
+    height: 400px;
+    /* Gradasi cahaya ungu elegan */
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: floatGlow 10s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatGlow {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, 40px) scale(1.1); }
+}
+
+/* Animasi Masuk (Fade Up) */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Layout Utama */
+.container {
+    max-width: 680px;
+    margin: 0 auto;
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+    position: relative;
+    z-index: 1; /* Memastikan konten ada di atas cahaya gradasi */
+}
+
+/* Bagian Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo {
+    width: 88px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 16px;
+    min-height: 88px; 
+    border-radius: 50%;
+    transition: all 0.4s ease;
+    opacity: 0; 
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+    
+    /* Sedikit efek glass pada frame logo */
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo:hover {
+    transform: scale(1.08) rotate(3deg);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+    color: #ffffff;
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+.description {
+    font-size: 15px;
+    color: #a1a1aa; 
+    max-width: 400px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+/* ========================================= */
+/* TOMBOL DENGAN EFEK GLASSMORPHISM */
+/* ========================================= */
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.link-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 16px 24px;
+    
+    /* Murni Efek Kaca (Glass) */
+    background: rgba(255, 255, 255, 0.03); /* Latar belakang putih transparan */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px); /* Dukungan Safari */
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Border putih tipis */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* Bayangan lembut */
+    
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    opacity: 0;
+}
+
+.link-btn:nth-child(1) { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; }
+.link-btn:nth-child(2) { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards; }
+
+.link-btn:hover {
+    background: rgba(255, 255, 255, 0.08); /* Kaca sedikit lebih terang saat di-hover */
+    border-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Style untuk JS Ripple Effect */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(0);
+    animation: rippleEffect 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Bagian Footer */
+footer {
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+}
+
+.watermark {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.3); /* Watermark dibuat transparan agar menyatu */
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.watermark:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
