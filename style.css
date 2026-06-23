@@ -223,6 +223,7 @@ header {
 .links-container > *:nth-child(7) { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.88s forwards; } /* Doc MAPID */
 .links-container > *:nth-child(8) { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.96s forwards; } /* Lark Contact */
 .links-container > *:nth-child(9) { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1.04s forwards; } /* Mobile Documentation */
+.links-container > *:nth-child(10) { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1.12s forwards; } /* Landing Page Feedback */
 
 /* Bagian Footer */
 footer {
